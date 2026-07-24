@@ -100,14 +100,6 @@ export default function DashboardPage() {
               <span>Panel Super Admin</span>
             </Link>
           )}
-          <button
-            onClick={fetchDashboardData}
-            disabled={loading}
-            className="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium px-3 py-2 rounded-xl transition flex items-center gap-1.5"
-          >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
-            <span>Muat Ulang</span>
-          </button>
         </div>
       </div>
 
@@ -181,59 +173,6 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Akses Cepat Tombol Pintas */}
-      <div>
-        <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
-          Akses Cepat Menu
-        </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          <Link
-            href="/pos"
-            className="bg-slate-900 hover:bg-slate-850 border border-slate-800 hover:border-brand-500/40 p-4 rounded-2xl transition group flex items-center gap-3 shadow-sm"
-          >
-            <div className="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <ShoppingCart className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-white group-hover:text-brand-400 transition">
-                Menu Kasir
-              </div>
-              <div className="text-[10px] text-slate-400">Buat transaksi baru</div>
-            </div>
-          </Link>
-
-          <Link
-            href="/inventory"
-            className="bg-slate-900 hover:bg-slate-850 border border-slate-800 hover:border-blue-500/40 p-4 rounded-2xl transition group flex items-center gap-3 shadow-sm"
-          >
-            <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Boxes className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-white group-hover:text-blue-400 transition">
-                Kelola Stok
-              </div>
-              <div className="text-[10px] text-slate-400">Stok masuk & opname</div>
-            </div>
-          </Link>
-
-          <Link
-            href="/reports"
-            className="bg-slate-900 hover:bg-slate-850 border border-slate-800 hover:border-purple-500/40 p-4 rounded-2xl transition group flex items-center gap-3 shadow-sm col-span-2 sm:col-span-1"
-          >
-            <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <BarChart3 className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-white group-hover:text-purple-400 transition">
-                Laporan Keuangan
-              </div>
-              <div className="text-[10px] text-slate-400">Penjualan & laba rugi</div>
-            </div>
-          </Link>
-        </div>
-      </div>
-
       {/* Two Column Grid: Low Stock Alert List & Recent Transactions */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Stok Menipis Details */}
@@ -283,7 +222,6 @@ export default function DashboardPage() {
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm">
           <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              
               <span>Transaksi Terakhir Hari Ini</span>
             </h3>
             <Link href="/pos" className="text-xs text-brand-400 font-semibold hover:underline">

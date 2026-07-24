@@ -263,8 +263,7 @@ function SettingsContent() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm">
         <div>
           <h1 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            <Settings className="w-5 h-5 text-slate-300" />
-            <span>Pengaturan Toko & Pengguna</span>
+            <span>Pengaturan</span>
           </h1>
           <p className="text-xs text-slate-400 mt-0.5">
             Kelola profil toko, akun kasir, status langganan, dan panduan penggunaan.
@@ -319,7 +318,6 @@ function SettingsContent() {
       {activeTab === 'store' && (
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 max-w-2xl shadow-sm space-y-4">
           <h3 className="text-sm font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-            <Store className="w-4 h-4 text-brand-400" />
             <span>Informasi Toko / Usaha</span>
           </h3>
 
@@ -397,7 +395,6 @@ function SettingsContent() {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <Users className="w-4 h-4 text-brand-400" />
               <span>Daftar Pengguna Toko</span>
             </h3>
 
@@ -455,7 +452,6 @@ function SettingsContent() {
           {/* Subscription Info Card */}
           <div className="lg:col-span-6 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
             <h3 className="text-sm font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-              <Key className="w-4 h-4 text-amber-400" />
               <span>Status Masa Aktif Toko</span>
             </h3>
 
@@ -550,7 +546,6 @@ function SettingsContent() {
       {activeTab === 'guide' && (
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
           <h3 className="text-sm font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-            <BookOpen className="w-4 h-4 text-brand-400" />
             <span>Panduan Penggunaan Aplikasi</span>
           </h3>
 

@@ -337,8 +337,7 @@ function InventoryContent() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm">
         <div>
           <h1 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            <Boxes className="w-5 h-5 text-blue-400" />
-            <span>Manajemen Stok & Produk</span>
+            <span>Manajemen Stok</span>
           </h1>
           <p className="text-xs text-slate-400 mt-0.5">
             Kelola katalog barang, penerimaan stok dari supplier, dan penyesuaian opname.
@@ -350,7 +349,7 @@ function InventoryContent() {
             onClick={() => setActiveTab('products')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               activeTab === 'products'
-                ? 'bg-blue-600 text-white shadow'
+                ? 'bg-brand-600 text-white shadow'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -360,7 +359,7 @@ function InventoryContent() {
             onClick={() => setActiveTab('stockin')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               activeTab === 'stockin'
-                ? 'bg-blue-600 text-white shadow'
+                ? 'bg-brand-600 text-white shadow'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -370,7 +369,7 @@ function InventoryContent() {
             onClick={() => setActiveTab('opname')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
               activeTab === 'opname'
-                ? 'bg-blue-600 text-white shadow'
+                ? 'bg-brand-600 text-white shadow'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
@@ -392,7 +391,7 @@ function InventoryContent() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Cari produk..."
-                  className="w-full pl-9 pr-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                  className="w-full pl-9 pr-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none"
                 />
               </div>
 
@@ -411,7 +410,7 @@ function InventoryContent() {
 
             <button
               onClick={handleOpenAddModal}
-              className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow"
+              className="w-full sm:w-auto bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow"
             >
               <Plus className="w-4 h-4" />
               <span>Tambah Produk Baru</span>
@@ -427,16 +426,16 @@ function InventoryContent() {
                 Belum ada produk yang cocok. Klik &quot;Tambah Produk Baru&quot; untuk memulai.
               </div>
             ) : (
-              <div className="overflow-x-auto">
+              <div className="w-full overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-950 text-slate-400 uppercase font-semibold text-[10px] border-b border-slate-800">
+                  <thead className="bg-slate-950 text-slate-400 font-semibold text-xs border-b border-slate-800">
                     <tr>
-                      <th className="p-3">Nama Produk</th>
-                      <th className="p-3">Kategori</th>
-                      <th className="p-3">Harga Beli</th>
-                      <th className="p-3">Harga Jual</th>
-                      <th className="p-3">Stok Saat Ini</th>
-                      <th className="p-3 text-right">Aksi</th>
+                      <th className="px-2.5 py-2.5">Nama Produk</th>
+                      <th className="px-2.5 py-2.5">Kategori</th>
+                      <th className="px-2.5 py-2.5">Harga Beli</th>
+                      <th className="px-2.5 py-2.5">Harga Jual</th>
+                      <th className="px-2.5 py-2.5">Stok Saat Ini</th>
+                      <th className="px-2.5 py-2.5 text-right">Aksi</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-800/60">
@@ -444,13 +443,13 @@ function InventoryContent() {
                       const isLow = prod.current_stock <= prod.min_stock_alert;
                       return (
                         <tr key={prod.id} className="hover:bg-slate-850/50 transition">
-                          <td className="p-3 font-semibold text-white">
+                          <td className="px-2.5 py-2 font-semibold text-white">
                             <div>{prod.name}</div>
                             {prod.sku && (
                               <div className="text-[10px] text-slate-500">SKU: {prod.sku}</div>
                             )}
                           </td>
-                          <td className="p-3 text-slate-300">
+                          <td className="px-2.5 py-2 text-slate-300">
                             {prod.category ? (
                               <span className="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">
                                 {prod.category}
@@ -459,24 +458,24 @@ function InventoryContent() {
                               '-'
                             )}
                           </td>
-                          <td className="p-3 text-slate-400">
+                          <td className="px-2.5 py-2 text-slate-400">
                             Rp {prod.cost_price.toLocaleString('id-ID')}
                           </td>
-                          <td className="p-3 font-bold text-brand-400">
+                          <td className="px-2.5 py-2 font-bold text-brand-400">
                             Rp {prod.sell_price.toLocaleString('id-ID')}
                           </td>
-                          <td className="p-3">
+                          <td className="px-2.5 py-2">
                             <span
-                              className={`px-2.5 py-1 rounded-full text-xs font-bold ${
+                              className={`px-2 py-0.5 rounded-full text-xs font-bold ${
                                 isLow
                                   ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
                                   : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
                               }`}
                             >
-                              {prod.current_stock} {prod.unit || 'pcs'}
+                              {prod.current_stock}
                             </span>
                           </td>
-                          <td className="p-3 text-right">
+                          <td className="px-2.5 py-2 text-right">
                             <div className="flex items-center justify-end gap-1">
                               <button
                                 onClick={() => handleOpenEditModal(prod)}

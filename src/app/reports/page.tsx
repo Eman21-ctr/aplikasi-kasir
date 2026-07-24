@@ -162,8 +162,7 @@ export default function ReportsPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm">
         <div>
           <h1 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-purple-400" />
-            <span>Laporan Keuangan & Operasional</span>
+            <span>Laporan</span>
           </h1>
           <p className="text-xs text-slate-400 mt-0.5">
             Analisis penjualan, laba rugi, nilai aset stok, dan arus kas toko.
@@ -175,7 +174,7 @@ export default function ReportsPage() {
             <button
               onClick={() => setDateFilter('today')}
               className={`px-2.5 py-1 rounded-lg transition ${
-                dateFilter === 'today' ? 'bg-purple-600 text-white font-bold' : 'text-slate-400'
+                dateFilter === 'today' ? 'bg-brand-600 text-white shadow font-semibold' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Hari Ini
@@ -183,7 +182,7 @@ export default function ReportsPage() {
             <button
               onClick={() => setDateFilter('7days')}
               className={`px-2.5 py-1 rounded-lg transition ${
-                dateFilter === '7days' ? 'bg-purple-600 text-white font-bold' : 'text-slate-400'
+                dateFilter === '7days' ? 'bg-brand-600 text-white shadow font-semibold' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               7 Hari
@@ -191,7 +190,7 @@ export default function ReportsPage() {
             <button
               onClick={() => setDateFilter('30days')}
               className={`px-2.5 py-1 rounded-lg transition ${
-                dateFilter === '30days' ? 'bg-purple-600 text-white font-bold' : 'text-slate-400'
+                dateFilter === '30days' ? 'bg-brand-600 text-white shadow font-semibold' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               30 Hari
@@ -199,7 +198,7 @@ export default function ReportsPage() {
             <button
               onClick={() => setDateFilter('all')}
               className={`px-2.5 py-1 rounded-lg transition ${
-                dateFilter === 'all' ? 'bg-purple-600 text-white font-bold' : 'text-slate-400'
+                dateFilter === 'all' ? 'bg-brand-600 text-white shadow font-semibold' : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Semua
@@ -217,52 +216,48 @@ export default function ReportsPage() {
       </div>
 
       {/* Report Sub-Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-800 pb-2 overflow-x-auto">
+      <div className="grid grid-cols-4 gap-1.5 border-b border-slate-800 pb-2">
         <button
           onClick={() => setActiveReportTab('sales')}
-          className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition ${
+          className={`py-2 px-1 rounded-xl text-xs font-semibold text-center transition ${
             activeReportTab === 'sales'
-              ? 'bg-purple-600/20 text-purple-300 border border-purple-500/40'
+              ? 'bg-brand-600 text-white shadow'
               : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
           }`}
         >
-          <TrendingUp className="w-4 h-4" />
           <span>Penjualan</span>
         </button>
 
         <button
           onClick={() => setActiveReportTab('profit')}
-          className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition ${
+          className={`py-2 px-1 rounded-xl text-xs font-semibold text-center transition ${
             activeReportTab === 'profit'
-              ? 'bg-emerald-600/20 text-emerald-300 border border-emerald-500/40'
+              ? 'bg-brand-600 text-white shadow'
               : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
           }`}
         >
-          <Wallet className="w-4 h-4" />
           <span>Laba Rugi</span>
         </button>
 
         <button
           onClick={() => setActiveReportTab('stock')}
-          className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition ${
+          className={`py-2 px-1 rounded-xl text-xs font-semibold text-center transition ${
             activeReportTab === 'stock'
-              ? 'bg-blue-600/20 text-blue-300 border border-blue-500/40'
+              ? 'bg-brand-600 text-white shadow'
               : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
           }`}
         >
-          <Boxes className="w-4 h-4" />
           <span>Aset Stok</span>
         </button>
 
         <button
           onClick={() => setActiveReportTab('cash')}
-          className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition ${
+          className={`py-2 px-1 rounded-xl text-xs font-semibold text-center transition ${
             activeReportTab === 'cash'
-              ? 'bg-amber-600/20 text-amber-300 border border-amber-500/40'
+              ? 'bg-brand-600 text-white shadow'
               : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
           }`}
         >
-          <Wallet className="w-4 h-4" />
           <span>Laporan Kas</span>
         </button>
       </div>

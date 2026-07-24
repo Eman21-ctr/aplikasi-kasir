@@ -313,10 +313,9 @@ export default function PosPage() {
   return (
     <div className="space-y-4">
       {/* Top Header & Tab Switcher */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm">
+      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-sm space-y-4">
         <div>
           <h1 className="text-lg font-bold text-white tracking-tight flex items-center gap-2">
-            <ShoppingCart className="w-5 h-5 text-brand-400" />
             <span>Kasir Penjualan (POS)</span>
           </h1>
           <p className="text-xs text-slate-400 mt-0.5">
@@ -324,10 +323,10 @@ export default function PosPage() {
           </p>
         </div>
 
-        <div className="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-800 self-start sm:self-auto">
+        <div className="grid grid-cols-2 gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800 w-full">
           <button
             onClick={() => setActiveTab('pos')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+            className={`w-full text-center py-2 rounded-lg text-xs font-semibold transition ${
               activeTab === 'pos'
                 ? 'bg-brand-600 text-white shadow'
                 : 'text-slate-400 hover:text-slate-200'
@@ -337,7 +336,7 @@ export default function PosPage() {
           </button>
           <button
             onClick={() => setActiveTab('history')}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition ${
+            className={`w-full text-center py-2 rounded-lg text-xs font-semibold transition ${
               activeTab === 'history'
                 ? 'bg-brand-600 text-white shadow'
                 : 'text-slate-400 hover:text-slate-200'
