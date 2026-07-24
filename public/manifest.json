@@ -1,0 +1,17 @@
+{
+  "name": "KasirPro - Kasir UMKM & Warung",
+  "short_name": "KasirPro",
+  "description": "Aplikasi Kasir (POS) Modern, Ringan, Cepat & Mudah untuk Manajemen Toko & Warung UMKM",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
