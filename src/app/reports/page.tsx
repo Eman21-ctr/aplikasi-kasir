@@ -7,7 +7,6 @@ import { Transaction, Product, StockMovement } from '@/types/database';
 import {
   BarChart3,
   TrendingUp,
-  DollarSign,
   Boxes,
   Wallet,
   Calendar,
@@ -239,7 +238,7 @@ export default function ReportsPage() {
               : 'text-slate-400 hover:text-white bg-slate-900 border border-slate-800'
           }`}
         >
-          <DollarSign className="w-4 h-4" />
+          <Wallet className="w-4 h-4" />
           <span>Laba Rugi</span>
         </button>
 

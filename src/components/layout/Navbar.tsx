@@ -30,21 +30,8 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-30 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 px-4 py-3 flex items-center justify-between">
-      {/* Brand & Store Name */}
+      {/* Brand & Store Name (Cleared for clean layout) */}
       <div className="flex items-center gap-3">
-        <Link href="/" className="flex items-center gap-2 group transition">
-          <div className="w-8.5 h-8.5 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-lg border border-brand-400/20 group-hover:scale-105 transition-transform">
-            <Store className="w-4.5 h-4.5 text-white" />
-          </div>
-          <div className="flex flex-col text-left">
-            <span className="text-xs font-bold tracking-tight text-white uppercase leading-none">
-              {store?.name || 'Kasir'}
-            </span>
-            <span className="text-[9px] text-slate-400 leading-none mt-0.5">
-              {store ? 'UMKM & Warung' : 'Aplikasi POS'}
-            </span>
-          </div>
-        </Link>
       </div>
 
       {/* Right Controls */}

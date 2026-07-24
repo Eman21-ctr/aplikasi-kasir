@@ -81,3 +81,42 @@
     display: none !important;
   }
 }
+
+/* LIGHT THEME ACCESSIBILITY OVERRIDES */
+
+/* Ensure all input values are dark green and readable */
+input, select, textarea {
+  color: #05221c !important;
+}
+
+/* Ensure headings inside panels are dark green instead of white */
+.bg-slate-900 h1,
+.bg-slate-900 h2,
+.bg-slate-900 h3,
+.bg-slate-900 h4,
+.bg-slate-900 h5,
+.bg-slate-900 h6,
+.bg-slate-950 h1,
+.bg-slate-950 h2,
+.bg-slate-950 h3,
+.bg-slate-950 h4,
+.bg-slate-950 h5,
+.bg-slate-950 h6 {
+  color: #05221c !important;
+}
+
+/* Ensure white text inside light panels turns dark green, unless it is a button, link, or badge */
+.bg-slate-900 .text-white:not(button):not(a):not([class*="bg-brand-"]):not([class*="bg-purple-"]):not([class*="bg-rose-"]):not([class*="bg-blue-"]):not([class*="bg-amber-"]):not([class*="bg-emerald-"]):not([class*="bg-red-"]):not([class*="bg-indigo-"]):not(.rounded-full):not(.badge),
+.bg-slate-950 .text-white:not(button):not(a):not([class*="bg-brand-"]):not([class*="bg-purple-"]):not([class*="bg-rose-"]):not([class*="bg-blue-"]):not([class*="bg-amber-"]):not([class*="bg-emerald-"]):not([class*="bg-red-"]):not([class*="bg-indigo-"]):not(.rounded-full):not(.badge) {
+  color: #05221c !important;
+}
+
+/* Sidebar hover element fix */
+aside a:hover {
+  color: #00b050 !important;
+}
+
+/* Navbar controls hover text fix */
+header button:hover, header a:hover {
+  color: #00b050 !important;
+}

@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import { Home, Receipt, Package, TrendingUp, Settings, Shield } from 'lucide-react';
+import { Home, ShoppingBag, Package, BarChart2, Settings, Shield } from 'lucide-react';
 import { clsx } from 'clsx';
 
 export const MobileNav: React.FC = () => {
@@ -13,12 +13,12 @@ export const MobileNav: React.FC = () => {
 
   const items = [
     { name: 'Dashboard', href: '/', icon: Home },
-    { name: 'Kasir', href: '/pos', icon: Receipt },
+    { name: 'Kasir', href: '/pos', icon: ShoppingBag },
     { name: 'Stok', href: '/inventory', icon: Package },
   ];
 
   if (isSuperAdminUser || role === 'owner') {
-    items.push({ name: 'Laporan', href: '/reports', icon: TrendingUp });
+    items.push({ name: 'Laporan', href: '/reports', icon: BarChart2 });
   }
 
   items.push({ name: 'Akun', href: '/settings', icon: Settings });

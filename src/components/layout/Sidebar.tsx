@@ -6,9 +6,9 @@ import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import {
   Home,
-  Receipt,
+  ShoppingBag,
   Package,
-  TrendingUp,
+  BarChart2,
   Settings,
   ShieldAlert,
   ChevronRight,
@@ -30,7 +30,7 @@ export const Sidebar: React.FC = () => {
     {
       name: 'Kasir (POS)',
       href: '/pos',
-      icon: Receipt,
+      icon: ShoppingBag,
       roles: ['owner', 'kasir', 'superadmin'],
     },
     {
@@ -42,7 +42,7 @@ export const Sidebar: React.FC = () => {
     {
       name: 'Laporan',
       href: '/reports',
-      icon: TrendingUp,
+      icon: BarChart2,
       roles: ['owner', 'superadmin'], // Hidden for kasir
     },
     {

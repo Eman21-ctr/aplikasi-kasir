@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="id" className={`dark ${nunito.variable}`}>
+    <html lang="id" className={`light ${nunito.variable}`}>
       <body className="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans">
         <AuthProvider>
           <Navbar />
