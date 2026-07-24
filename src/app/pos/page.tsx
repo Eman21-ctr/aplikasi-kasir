@@ -284,7 +284,7 @@ export default function PosPage() {
 
   // WhatsApp receipt generator
   const getWhatsAppShareLink = (trx: Transaction, items: any[], cashPaid?: number, change?: number) => {
-    let text = `*STRUK PENJUALAN - ${store?.name || 'KasirPro'}*\n`;
+    let text = `*STRUK PENJUALAN - ${store?.name || 'Kasir'}*\n`;
     text += `No: ${trx.transaction_number}\n`;
     text += `Tanggal: ${new Date(trx.created_at).toLocaleString('id-ID')}\n`;
     text += `Metode Bayar: ${trx.payment_method.toUpperCase()}\n`;
@@ -791,7 +791,7 @@ export default function PosPage() {
               className="bg-white text-black p-4 rounded-xl font-mono text-[11px] leading-tight space-y-2 shadow-inner"
             >
               <div className="text-center">
-                <h2 className="font-bold text-sm uppercase">{store?.name || 'KASIRPRO'}</h2>
+                <h2 className="font-bold text-sm uppercase">{store?.name || 'KASIR'}</h2>
                 <p className="text-[10px]">{store?.address || 'Alamat Toko'}</p>
                 <p className="text-[10px]">WA: {store?.whatsapp_number || '-'}</p>
               </div>

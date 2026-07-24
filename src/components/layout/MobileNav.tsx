@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import { LayoutDashboard, ShoppingCart, Boxes, BarChart3, Settings, ShieldCheck } from 'lucide-react';
+import { Home, Receipt, Package, TrendingUp, Settings, Shield } from 'lucide-react';
 import { clsx } from 'clsx';
 
 export const MobileNav: React.FC = () => {
@@ -12,19 +12,19 @@ export const MobileNav: React.FC = () => {
   const { role, isSuperAdminUser } = useAuth();
 
   const items = [
-    { name: 'Dashboard', href: '/', icon: LayoutDashboard },
-    { name: 'Kasir', href: '/pos', icon: ShoppingCart },
-    { name: 'Stok', href: '/inventory', icon: Boxes },
+    { name: 'Dashboard', href: '/', icon: Home },
+    { name: 'Kasir', href: '/pos', icon: Receipt },
+    { name: 'Stok', href: '/inventory', icon: Package },
   ];
 
   if (isSuperAdminUser || role === 'owner') {
-    items.push({ name: 'Laporan', href: '/reports', icon: BarChart3 });
+    items.push({ name: 'Laporan', href: '/reports', icon: TrendingUp });
   }
 
   items.push({ name: 'Akun', href: '/settings', icon: Settings });
 
   if (isSuperAdminUser) {
-    items.push({ name: 'Admin', href: '/admin', icon: ShieldCheck });
+    items.push({ name: 'Admin', href: '/admin', icon: Shield });
   }
 
   return (

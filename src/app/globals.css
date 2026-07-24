@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-sans: var(--font-nunito), 'Nunito', system-ui, -apple-system, sans-serif;
   }
   
   body {
-    @apply bg-slate-900 text-slate-100 antialiased font-sans selection:bg-brand-500 selection:text-white min-h-screen;
+    @apply bg-slate-950 text-slate-100 antialiased font-sans selection:bg-brand-500 selection:text-white min-h-screen;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
@@ -54,8 +54,8 @@
 }
 
 .glass-input:focus {
-  border-color: #10b981;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  border-color: #00b050;
+  box-shadow: 0 0 0 2px rgba(0, 176, 80, 0.2);
   outline: none;
 }
 

@@ -551,7 +551,7 @@ function SettingsContent() {
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-sm space-y-4">
           <h3 className="text-sm font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
             <BookOpen className="w-4 h-4 text-brand-400" />
-            <span>Panduan Penggunaan KasirPro</span>
+            <span>Panduan Penggunaan Aplikasi</span>
           </h3>
 
           <div className="space-y-3">

@@ -5,10 +5,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import {
-  LayoutDashboard,
-  ShoppingCart,
-  Boxes,
-  BarChart3,
+  Home,
+  Receipt,
+  Package,
+  TrendingUp,
   Settings,
   ShieldAlert,
   ChevronRight,
@@ -24,25 +24,25 @@ export const Sidebar: React.FC = () => {
     {
       name: 'Dashboard',
       href: '/',
-      icon: LayoutDashboard,
+      icon: Home,
       roles: ['owner', 'kasir', 'superadmin'],
     },
     {
       name: 'Kasir (POS)',
       href: '/pos',
-      icon: ShoppingCart,
+      icon: Receipt,
       roles: ['owner', 'kasir', 'superadmin'],
     },
     {
       name: 'Manajemen Stok',
       href: '/inventory',
-      icon: Boxes,
+      icon: Package,
       roles: ['owner', 'kasir', 'superadmin'],
     },
     {
       name: 'Laporan',
       href: '/reports',
-      icon: BarChart3,
+      icon: TrendingUp,
       roles: ['owner', 'superadmin'], // Hidden for kasir
     },
     {

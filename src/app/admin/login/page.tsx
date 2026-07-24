@@ -123,7 +123,7 @@ function AdminLoginContent() {
           </div>
           <h1 className="text-xl font-bold text-white tracking-tight">Panel Super Admin</h1>
           <p className="text-xs text-purple-300/80 mt-1">
-            Masuk ke dashboard pemilik aplikasi KasirPro
+            Masuk ke dashboard pemilik aplikasi Kasir
           </p>
         </div>
 

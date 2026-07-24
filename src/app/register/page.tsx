@@ -133,7 +133,7 @@ export default function RegisterPage() {
           </div>
           <h1 className="text-2xl font-extrabold text-white tracking-tight">Daftar Toko Baru</h1>
           <p className="text-xs text-slate-400 mt-1.5 leading-relaxed max-w-sm">
-            Mulai kelola usaha warung & UMKM Anda secara profesional dengan KasirPro
+            Mulai kelola usaha warung & UMKM Anda secara profesional
           </p>
 
           {/* Feature Badges */}

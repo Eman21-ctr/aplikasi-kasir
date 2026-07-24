@@ -85,7 +85,7 @@ export default function DashboardPage() {
           <h1 className="text-xl md:text-2xl font-extrabold text-white tracking-tight flex items-center gap-2">
             <span>Selamat Datang, {store?.owner_name || 'Pemilik Toko'}</span>
             <span className="text-sm px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-400 font-medium border border-brand-500/20">
-              {store?.name || 'KasirPro'}
+              {store?.name || 'Aplikasi Kasir'}
             </span>
           </h1>
           <p className="text-xs text-slate-400 mt-1">
@@ -121,7 +121,7 @@ export default function DashboardPage() {
             <Sparkles className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-xs font-bold text-slate-200">Tips KasirPro Hari Ini</h4>
+            <h4 className="text-xs font-bold text-slate-200">Tips Hari Ini</h4>
             <p className="text-[11px] text-slate-400 mt-0.5">
               Lakukan pengecekan stok fisik tiap pagi di menu <strong>Stok Opname</strong> agar catatan persediaan selalu presisi.
             </p>
