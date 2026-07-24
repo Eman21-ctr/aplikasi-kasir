@@ -84,9 +84,6 @@ export default function DashboardPage() {
         <div>
           <h1 className="text-xl md:text-2xl font-extrabold text-white tracking-tight flex items-center gap-2">
             <span>Selamat Datang, {store?.owner_name || 'Pemilik Toko'}</span>
-            <span className="text-sm px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-400 font-medium border border-brand-500/20">
-              {store?.name || 'Aplikasi Kasir'}
-            </span>
           </h1>
           <p className="text-xs text-slate-400 mt-1">
             Ringkasan performa dan aktivitas transaksi usaha Anda hari ini.
@@ -142,9 +139,6 @@ export default function DashboardPage() {
         <div className="bg-slate-900 border border-slate-800/80 rounded-2xl p-5 relative overflow-hidden shadow-sm">
           <div className="flex items-center justify-between text-slate-400 text-xs font-medium mb-3">
             <span>Penjualan Hari Ini</span>
-            <div className="w-8 h-8 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
-              <TrendingUp className="w-4 h-4" />
-            </div>
           </div>
           <div className="text-2xl font-extrabold text-white tracking-tight">
             Rp {todaySales.toLocaleString('id-ID')}
@@ -159,9 +153,6 @@ export default function DashboardPage() {
         <div className="bg-slate-900 border border-slate-800/80 rounded-2xl p-5 relative overflow-hidden shadow-sm">
           <div className="flex items-center justify-between text-slate-400 text-xs font-medium mb-3">
             <span>Jumlah Transaksi</span>
-            <div className="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center">
-              <Receipt className="w-4 h-4" />
-            </div>
           </div>
           <div className="text-2xl font-extrabold text-white tracking-tight">
             {todayTrxCount} <span className="text-sm text-slate-400 font-normal">Transaksi</span>
@@ -175,9 +166,6 @@ export default function DashboardPage() {
         <div className="bg-slate-900 border border-slate-800/80 rounded-2xl p-5 relative overflow-hidden shadow-sm sm:col-span-2 lg:col-span-1">
           <div className="flex items-center justify-between text-slate-400 text-xs font-medium mb-3">
             <span>Stok Menipis</span>
-            <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
-              <AlertTriangle className="w-4 h-4" />
-            </div>
           </div>
           <div className="text-2xl font-extrabold text-white tracking-tight flex items-baseline gap-2">
             <span>{lowStockProducts.length}</span>
@@ -295,7 +283,7 @@ export default function DashboardPage() {
         <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm">
           <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
             <h3 className="text-sm font-bold text-white flex items-center gap-2">
-              <Receipt className="w-4 h-4 text-brand-400" />
+              
               <span>Transaksi Terakhir Hari Ini</span>
             </h3>
             <Link href="/pos" className="text-xs text-brand-400 font-semibold hover:underline">
