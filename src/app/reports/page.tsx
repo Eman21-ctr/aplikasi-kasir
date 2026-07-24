@@ -10,12 +10,13 @@ import {
   Boxes,
   Wallet,
   Calendar,
-  Printer,
+  Download,
   ShieldAlert,
   ArrowUpRight,
   Sparkles,
 } from 'lucide-react';
 import Link from 'next/link';
+import * as XLSX from 'xlsx';
 
 type DateFilter = 'today' | '7days' | '30days' | 'all';
 
@@ -138,6 +139,77 @@ export default function ReportsPage() {
 
   const nonCashSales = totalSalesRevenue - cashSales;
 
+  // Download Excel Handler
+  const handleExportExcel = () => {
+    try {
+      const wb = XLSX.utils.book_new();
+
+      // 1. Sheet Ringkasan Laporan
+      const summaryData = [
+        ['LAPORAN KEUANGAN & OPERASIONAL TOKO'],
+        ['Nama Toko', store?.name || 'Toko Kasir'],
+        ['Pemilik', store?.owner_name || '-'],
+        [
+          'Periode Filter',
+          dateFilter === 'today'
+            ? 'Hari Ini'
+            : dateFilter === '7days'
+            ? '7 Hari Terakhir'
+            : dateFilter === '30days'
+            ? '30 Hari Terakhir'
+            : 'Semua Periode',
+        ],
+        ['Tanggal Cetak', new Date().toLocaleString('id-ID')],
+        [],
+        ['METRIK KEUANGAN', 'NILAI (RP) / JUMLAH'],
+        ['Total Omset Penjualan', totalSalesRevenue],
+        ['Jumlah Transaksi Selesai', totalTrxCount],
+        ['Rata-Rata Nilai Transaksi', Math.round(avgTrxValue)],
+        ['Modal Barang Terjual (HPP)', cogsTotal],
+        ['Estimasi Laba Kotor', grossProfit],
+        ['Pemasukan Kas Tunai', cashSales],
+        ['Pemasukan Non-Tunai (QRIS & Transfer)', nonCashSales],
+        ['Nilai Aset Modal Stok (Harga Beli)', stockCostValue],
+        ['Potensi Nilai Jual Stok', stockSellValue],
+      ];
+      const summarySheet = XLSX.utils.aoa_to_sheet(summaryData);
+      XLSX.utils.book_append_sheet(wb, summarySheet, 'Ringkasan Laporan');
+
+      // 2. Sheet Detail Penjualan
+      const salesRows = filteredTransactions.map((t, idx) => ({
+        'No.': idx + 1,
+        'No. Transaksi': t.transaction_number,
+        'Tanggal & Waktu': new Date(t.created_at).toLocaleString('id-ID'),
+        'Metode Pembayaran': t.payment_method?.toUpperCase(),
+        'Total Nominal (Rp)': Number(t.total_amount) || 0,
+      }));
+      const salesSheet = XLSX.utils.json_to_sheet(salesRows);
+      XLSX.utils.book_append_sheet(wb, salesSheet, 'Detail Penjualan');
+
+      // 3. Sheet Katalog Stok & Valuasi
+      const stockRows = products.map((p, idx) => ({
+        'No.': idx + 1,
+        'Nama Produk': p.name,
+        Kategori: p.category || '-',
+        'Harga Beli (Rp)': p.cost_price,
+        'Harga Jual (Rp)': p.sell_price,
+        'Stok Saat Ini': p.current_stock,
+        'Total Modal (Rp)': p.current_stock * p.cost_price,
+        'Total Potensi Jual (Rp)': p.current_stock * p.sell_price,
+      }));
+      const stockSheet = XLSX.utils.json_to_sheet(stockRows);
+      XLSX.utils.book_append_sheet(wb, stockSheet, 'Katalog & Valuasi Stok');
+
+      // Save file
+      const fileName = `Laporan_${(store?.name || 'Toko').replace(/\s+/g, '_')}_${dateFilter}_${
+        new Date().toISOString().slice(0, 10)
+      }.xlsx`;
+      XLSX.writeFile(wb, fileName);
+    } catch (err: any) {
+      alert('Gagal mendownload laporan Excel: ' + err.message);
+    }
+  };
+
   if (!isAccessAllowed) {
     return (
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 text-center max-w-md mx-auto my-12 space-y-4">
@@ -174,7 +246,9 @@ export default function ReportsPage() {
             <button
               onClick={() => setDateFilter('today')}
               className={`px-2.5 py-1 rounded-lg transition ${
-                dateFilter === 'today' ? 'bg-brand-600 text-white shadow font-semibold' : 'text-slate-400 hover:text-slate-200'
+                dateFilter === 'today'
+                  ? 'bg-brand-600 text-white shadow font-semibold'
+                  : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Hari Ini
@@ -182,7 +256,9 @@ export default function ReportsPage() {
             <button
               onClick={() => setDateFilter('7days')}
               className={`px-2.5 py-1 rounded-lg transition ${
-                dateFilter === '7days' ? 'bg-brand-600 text-white shadow font-semibold' : 'text-slate-400 hover:text-slate-200'
+                dateFilter === '7days'
+                  ? 'bg-brand-600 text-white shadow font-semibold'
+                  : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               7 Hari
@@ -190,7 +266,9 @@ export default function ReportsPage() {
             <button
               onClick={() => setDateFilter('30days')}
               className={`px-2.5 py-1 rounded-lg transition ${
-                dateFilter === '30days' ? 'bg-brand-600 text-white shadow font-semibold' : 'text-slate-400 hover:text-slate-200'
+                dateFilter === '30days'
+                  ? 'bg-brand-600 text-white shadow font-semibold'
+                  : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               30 Hari
@@ -198,7 +276,9 @@ export default function ReportsPage() {
             <button
               onClick={() => setDateFilter('all')}
               className={`px-2.5 py-1 rounded-lg transition ${
-                dateFilter === 'all' ? 'bg-brand-600 text-white shadow font-semibold' : 'text-slate-400 hover:text-slate-200'
+                dateFilter === 'all'
+                  ? 'bg-brand-600 text-white shadow font-semibold'
+                  : 'text-slate-400 hover:text-slate-200'
               }`}
             >
               Semua
@@ -206,11 +286,12 @@ export default function ReportsPage() {
           </div>
 
           <button
-            onClick={() => window.print()}
-            className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl transition"
-            title="Cetak Laporan"
+            onClick={handleExportExcel}
+            className="p-2 bg-brand-600 hover:bg-brand-500 text-white rounded-xl transition shadow flex items-center gap-1.5 text-xs font-semibold"
+            title="Download Laporan Excel"
           >
-            <Printer className="w-4 h-4" />
+            <Download className="w-4 h-4" />
+            <span className="hidden sm:inline">Export Excel</span>
           </button>
         </div>
       </div>

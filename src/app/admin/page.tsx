@@ -20,6 +20,7 @@ import {
   Check,
   Sparkles,
   Zap,
+  Ban,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -113,26 +114,45 @@ export default function SuperAdminPage() {
     }
   };
 
-  // Instant direct activation by Super Admin
-  const handleInstantActivateStore = async (storeId: string) => {
-    if (!confirm('Aktivasi langsung langganan toko ini selama 1 tahun?')) return;
-    try {
-      const now = new Date();
-      const oneYearLater = new Date(now.getTime() + 365 * 24 * 60 * 60 * 1000).toISOString();
+  // Toggle store activation status (Aktifkan / Nonaktifkan)
+  const handleToggleStoreStatus = async (storeId: string, currentStatus: string) => {
+    const isActive = currentStatus === 'active';
 
-      await supabase
-        .from('stores')
-        .update({
-          subscription_status: 'active',
-          activated_at: now.toISOString(),
-          expires_at: oneYearLater,
-        })
-        .eq('id', storeId);
+    if (isActive) {
+      if (!confirm('Yakin ingin MENONAKTIFKAN akses langganan toko ini?')) return;
+      try {
+        await supabase
+          .from('stores')
+          .update({
+            subscription_status: 'expired',
+          })
+          .eq('id', storeId);
 
-      fetchAdminData();
-      alert('Toko berhasil diaktifkan 1 tahun!');
-    } catch (err: any) {
-      alert('Gagal mengaktifkan toko');
+        fetchAdminData();
+        alert('Status toko berhasil dinonaktifkan.');
+      } catch (err: any) {
+        alert('Gagal menonaktifkan toko: ' + err.message);
+      }
+    } else {
+      if (!confirm('Aktifkan langganan toko ini selama 1 tahun ke depan?')) return;
+      try {
+        const now = new Date();
+        const oneYearLater = new Date(now.getTime() + 365 * 24 * 60 * 60 * 1000).toISOString();
+
+        await supabase
+          .from('stores')
+          .update({
+            subscription_status: 'active',
+            activated_at: now.toISOString(),
+            expires_at: oneYearLater,
+          })
+          .eq('id', storeId);
+
+        fetchAdminData();
+        alert('Toko berhasil diaktifkan 1 tahun!');
+      } catch (err: any) {
+        alert('Gagal mengaktifkan toko: ' + err.message);
+      }
     }
   };
 
@@ -314,46 +334,59 @@ export default function SuperAdminPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60">
-                {filteredStores.map((st) => (
-                  <tr key={st.id} className="hover:bg-slate-850/50 transition">
-                    <td className="p-3 font-semibold text-white">
-                      <div>{st.name}</div>
-                      <div className="text-[10px] text-slate-500">ID: {st.id.slice(0, 8)}...</div>
-                    </td>
-                    <td className="p-3 text-slate-300">
-                      <div>{st.owner_name || 'Owner'}</div>
-                      <div className="text-[10px] text-slate-400">WA: {st.whatsapp_number || '-'}</div>
-                      <div className="text-[10px] text-slate-400">{st.email}</div>
-                    </td>
-                    <td className="p-3">
-                      <span
-                        className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-                          st.subscription_status === 'active'
-                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                            : st.subscription_status === 'expired'
-                            ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
-                            : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
-                        }`}
-                      >
-                        {st.subscription_status}
-                      </span>
-                    </td>
-                    <td className="p-3 text-slate-400">
-                      {st.expires_at
-                        ? new Date(st.expires_at).toLocaleDateString('id-ID')
-                        : 'Belum Aktif'}
-                    </td>
-                    <td className="p-3 text-right">
-                      <button
-                        onClick={() => handleInstantActivateStore(st.id)}
-                        className="px-3 py-1.5 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-300 hover:text-white border border-emerald-500/40 rounded-lg text-xs font-semibold transition flex items-center gap-1 ml-auto"
-                      >
-                        <Zap className="w-3.5 h-3.5" />
-                        <span>Aktivasi 1 Thn</span>
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {filteredStores.map((st) => {
+                  const isStoreActive = st.subscription_status === 'active';
+                  return (
+                    <tr key={st.id} className="hover:bg-slate-850/50 transition">
+                      <td className="p-3 font-semibold text-white">
+                        <div>{st.name}</div>
+                        <div className="text-[10px] text-slate-500">ID: {st.id.slice(0, 8)}...</div>
+                      </td>
+                      <td className="p-3 text-slate-300">
+                        <div>{st.owner_name || 'Owner'}</div>
+                        <div className="text-[10px] text-slate-400">WA: {st.whatsapp_number || '-'}</div>
+                        <div className="text-[10px] text-slate-400">{st.email}</div>
+                      </td>
+                      <td className="p-3">
+                        <span
+                          className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase ${
+                            isStoreActive
+                              ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                              : st.subscription_status === 'expired'
+                              ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                              : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                          }`}
+                        >
+                          {st.subscription_status}
+                        </span>
+                      </td>
+                      <td className="p-3 text-slate-400">
+                        {st.expires_at
+                          ? new Date(st.expires_at).toLocaleDateString('id-ID')
+                          : 'Belum Aktif'}
+                      </td>
+                      <td className="p-3 text-right">
+                        {isStoreActive ? (
+                          <button
+                            onClick={() => handleToggleStoreStatus(st.id, st.subscription_status)}
+                            className="px-3 py-1.5 bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white border border-rose-500/40 rounded-lg text-xs font-semibold transition flex items-center gap-1 ml-auto"
+                          >
+                            <Ban className="w-3.5 h-3.5" />
+                            <span>Nonaktifkan</span>
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() => handleToggleStoreStatus(st.id, st.subscription_status)}
+                            className="px-3 py-1.5 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-300 hover:text-white border border-emerald-500/40 rounded-lg text-xs font-semibold transition flex items-center gap-1 ml-auto"
+                          >
+                            <Zap className="w-3.5 h-3.5" />
+                            <span>Aktifkan</span>
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
