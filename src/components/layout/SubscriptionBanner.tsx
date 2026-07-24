@@ -9,20 +9,7 @@ export const SubscriptionBanner: React.FC = () => {
   const { subscriptionStatus, daysRemaining, store, isSuperAdminUser } = useAuth();
 
   if (isSuperAdminUser) {
-    return (
-      <div className="bg-gradient-to-r from-purple-900/90 via-indigo-900/90 to-purple-900/90 border-b border-purple-500/30 px-4 py-2 text-xs font-medium text-purple-200 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-purple-400 shrink-0" />
-          <span>Mode Super Admin Pemilik Aplikasi — Akses Penuh Lintas Toko & Inisialisasi</span>
-        </div>
-        <Link
-          href="/admin"
-          className="bg-purple-600 hover:bg-purple-500 text-white px-2.5 py-1 rounded text-[11px] font-semibold transition"
-        >
-          Ke Dashboard Admin
-        </Link>
-      </div>
-    );
+    return null;
   }
 
   if (subscriptionStatus === 'pending') {

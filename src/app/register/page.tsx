@@ -118,14 +118,6 @@ export default function RegisterPage() {
         {/* Top Gradient Bar */}
         <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-600" />
 
-        {/* Category Pill */}
-        <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[11px] font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-            Registrasi Akun Toko Baru
-          </span>
-        </div>
-
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-6">
           <div className="mb-3.5">

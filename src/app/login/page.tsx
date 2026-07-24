@@ -76,26 +76,18 @@ export default function LoginPage() {
   return (
     <div className="min-h-[85vh] flex items-center justify-center py-8 px-4 relative">
       {/* Background glow accents for Login */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-500/10 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="w-full max-w-md bg-slate-900/90 backdrop-blur-xl border border-cyan-500/20 rounded-3xl p-6 md:p-8 shadow-2xl shadow-cyan-950/30 relative overflow-hidden">
+      <div className="w-full max-w-md bg-slate-900/90 backdrop-blur-xl border border-brand-500/20 rounded-3xl p-6 md:p-8 shadow-2xl shadow-brand-950/30 relative overflow-hidden">
         {/* Top Gradient Bar */}
-        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500" />
-
-        {/* Category Pill */}
-        <div className="flex justify-center mb-4">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[11px] font-bold uppercase tracking-wider">
-            <KeyRound className="w-3.5 h-3.5 text-cyan-400" />
-            Portal Masuk Akun Toko
-          </span>
-        </div>
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-600 via-emerald-500 to-brand-500" />
 
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-6">
           <div className="mb-3.5">
             <Logo size="lg" showText={false} />
           </div>
-          <h1 className="text-2xl font-extrabold text-white tracking-tight">Masuk ke Aplikasi Kasir</h1>
+          <h1 className="text-2xl font-extrabold text-white tracking-tight">Masuk</h1>
           <p className="text-xs text-slate-400 mt-1.5 leading-relaxed max-w-xs">
             Kelola transaksi kasir, stok barang, dan laporan penjualan toko Anda.
           </p>
@@ -119,7 +111,7 @@ export default function LoginPage() {
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-              Email Registrasi Toko
+              Email
             </label>
             <div className="relative">
               <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
@@ -129,7 +121,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="nama@email-toko.com"
-                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:outline-none transition"
+                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none transition"
               />
             </div>
           </div>
@@ -146,7 +138,7 @@ export default function LoginPage() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 focus:outline-none transition"
+                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-950/90 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 focus:outline-none transition"
               />
             </div>
           </div>
@@ -158,7 +150,7 @@ export default function LoginPage() {
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                className="w-4 h-4 rounded bg-slate-950 border-slate-800 text-cyan-500 focus:ring-cyan-500 focus:ring-offset-slate-900 cursor-pointer"
+                className="w-4 h-4 rounded bg-slate-950 border-slate-800 text-brand-500 focus:ring-brand-500 focus:ring-offset-slate-900 cursor-pointer"
               />
               <span className="group-hover:text-white transition text-slate-300 text-xs">
                 Ingat Email & Password
@@ -169,14 +161,14 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-2 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-indigo-500 text-white font-bold py-3 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-cyan-600/20 active:scale-[0.99]"
+            className="w-full mt-2 bg-gradient-to-r from-brand-600 to-emerald-500 hover:from-brand-500 hover:to-emerald-400 text-slate-950 font-extrabold py-3 px-4 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-brand-500/20 active:scale-[0.99]"
           >
             {loading ? (
-              <span className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
+              <span className="animate-spin rounded-full h-4 w-4 border-2 border-slate-950 border-t-transparent" />
             ) : (
               <>
-                <LogIn className="w-4 h-4" />
-                <span>Masuk Ke Akun</span>
+                <LogIn className="w-4 h-4 stroke-[2.5]" />
+                <span>Masuk</span>
               </>
             )}
           </button>
@@ -191,7 +183,7 @@ export default function LoginPage() {
             </div>
             <Link
               href="/register"
-              className="px-3 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 hover:text-white text-xs font-bold transition flex items-center gap-1 shrink-0"
+              className="px-3 py-2 rounded-xl bg-brand-500/10 hover:bg-brand-500/20 border border-brand-500/30 text-brand-400 hover:text-white text-xs font-bold transition flex items-center gap-1 shrink-0"
             >
               <span>Daftar Toko</span>
               <ArrowRight className="w-3.5 h-3.5" />

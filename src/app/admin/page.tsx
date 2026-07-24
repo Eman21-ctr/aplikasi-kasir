@@ -171,15 +171,15 @@ export default function SuperAdminPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-purple-950/80 via-slate-900 to-indigo-950/80 border border-purple-500/30 rounded-2xl p-5 shadow-lg">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-brand-950/90 via-slate-900 to-brand-950/90 border border-brand-500/30 rounded-2xl p-5 shadow-lg">
         <div>
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-6 h-6 text-purple-400" />
+            <ShieldCheck className="w-6 h-6 text-brand-400" />
             <h1 className="text-xl font-extrabold text-white tracking-tight">
-              Dashboard Super Admin Pemilik Aplikasi
+              Dashboard Super Admin
             </h1>
           </div>
-          <p className="text-xs text-purple-300/80 mt-1">
+          <p className="text-xs text-brand-300/80 mt-1">
             Kelola pendaftaran toko lintas UMKM, generate kode aktivasi 1 tahun, dan perpanjangan langganan.
           </p>
         </div>
@@ -187,7 +187,7 @@ export default function SuperAdminPage() {
         <button
           onClick={fetchAdminData}
           disabled={loading}
-          className="bg-purple-600 hover:bg-purple-500 text-white text-xs font-semibold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow self-start md:self-auto"
+          className="bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow self-start md:self-auto"
         >
           <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
           <span>Muat Ulang Data</span>
@@ -215,8 +215,7 @@ export default function SuperAdminPage() {
       {/* Generator Box */}
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm space-y-4">
         <h3 className="text-sm font-bold text-white flex items-center gap-2 border-b border-slate-800 pb-3">
-          <Key className="w-4 h-4 text-purple-400" />
-          <span>Generator Kode Aktivasi (1 Tahun)</span>
+          <span>Generator Kode Aktivasi 1 Tahun</span>
         </h3>
 
         <form onSubmit={handleGenerateCode} className="flex flex-col sm:flex-row gap-3">
@@ -224,7 +223,7 @@ export default function SuperAdminPage() {
             required
             value={selectedStoreForCode}
             onChange={(e) => setSelectedStoreForCode(e.target.value)}
-            className="flex-1 px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-purple-500 focus:outline-none"
+            className="flex-1 px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-brand-500 focus:outline-none"
           >
             <option value="">-- Pilih Toko yang Membayar --</option>
             {stores.map((st) => (
@@ -237,7 +236,7 @@ export default function SuperAdminPage() {
           <button
             type="submit"
             disabled={generating || !selectedStoreForCode}
-            className="bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition flex items-center justify-center gap-2 shadow disabled:opacity-50"
+            className="bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition flex items-center justify-center gap-2 shadow disabled:opacity-50"
           >
             <Plus className="w-4 h-4" />
             <span>Generate Kode Baru</span>
@@ -245,9 +244,9 @@ export default function SuperAdminPage() {
         </form>
 
         {generatedCode && (
-          <div className="p-4 bg-purple-950/60 border border-purple-500/40 rounded-xl flex items-center justify-between flex-wrap gap-2">
+          <div className="p-4 bg-brand-950/60 border border-brand-500/40 rounded-xl flex items-center justify-between flex-wrap gap-2">
             <div>
-              <div className="text-[10px] text-purple-300 font-semibold uppercase">
+              <div className="text-[10px] text-brand-300 font-semibold uppercase">
                 Kode Aktivasi Siap Dikirim Ke Pengguna:
               </div>
               <div className="text-lg font-mono font-extrabold text-white tracking-widest mt-0.5">
@@ -257,7 +256,7 @@ export default function SuperAdminPage() {
 
             <button
               onClick={() => handleCopyCode(generatedCode)}
-              className="bg-purple-700 hover:bg-purple-600 text-white text-xs font-bold px-3.5 py-2 rounded-lg transition flex items-center gap-1.5"
+              className="bg-brand-700 hover:bg-brand-600 text-white text-xs font-bold px-3.5 py-2 rounded-lg transition flex items-center gap-1.5"
             >
               {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
               <span>{copied ? 'Tersalin!' : 'Salin Kode'}</span>
@@ -270,7 +269,6 @@ export default function SuperAdminPage() {
       <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm space-y-4">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           <h3 className="text-sm font-bold text-white flex items-center gap-2">
-            <StoreIcon className="w-4 h-4 text-purple-400" />
             <span>Daftar Seluruh Toko Terdaftar</span>
           </h3>
 
@@ -282,7 +280,7 @@ export default function SuperAdminPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Cari toko / email..."
-                className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-purple-500 focus:outline-none"
+                className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-brand-500 focus:outline-none"
               />
             </div>
 
