@@ -80,7 +80,6 @@ export const Navbar: React.FC = () => {
           </div>
         )}
 
-        {/* User Info Badge */}
         {user ? (
           <div className="flex items-center gap-2 bg-slate-900 border border-slate-800 rounded-xl px-2.5 py-1.5">
             <div className="w-7 h-7 rounded-lg bg-slate-800 text-slate-200 flex items-center justify-center font-bold text-xs">
@@ -113,14 +112,7 @@ export const Navbar: React.FC = () => {
               <LogOut className="w-4 h-4" />
             </button>
           </div>
-        ) : (
-          <Link
-            href="/login"
-            className="bg-brand-600 hover:bg-brand-500 text-white text-xs font-semibold px-3.5 py-1.5 rounded-xl transition shadow"
-          >
-            Masuk
-          </Link>
-        )}
+        ) : null}
       </div>
     </header>
   );

@@ -30,7 +30,7 @@ export const Logo: React.FC<LogoProps> = ({
       <div
         className={clsx(
           dimensions.box,
-          'relative rounded-xl overflow-hidden shadow-lg shadow-cyan-500/20 border border-slate-700/50 bg-slate-900 group-hover:scale-105 transition-transform shrink-0 flex items-center justify-center'
+          'relative rounded-xl overflow-hidden shadow-lg shadow-emerald-500/20 border border-slate-700/50 bg-slate-900 group-hover:scale-105 transition-transform shrink-0 flex items-center justify-center'
         )}
       >
         <Image
@@ -44,8 +44,8 @@ export const Logo: React.FC<LogoProps> = ({
       </div>
 
       {showText && (
-        <span className={clsx('font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-400 bg-clip-text text-transparent', dimensions.text)}>
-          Kasir<span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">Pro</span>
+        <span className={clsx('font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent', dimensions.text)}>
+          Kasir<span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Pro</span>
         </span>
       )}
     </div>
