@@ -673,7 +673,7 @@ function InventoryContent() {
           {/* Form Record Opname */}
           <div className="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm h-fit">
             <h3 className="text-sm font-bold text-white mb-3 flex items-center gap-2 border-b border-slate-800 pb-3">
-              <ClipboardCheck className="w-4 h-4 text-purple-400" />
+              <ClipboardCheck className="w-4 h-4 text-emerald-400" />
               <span>Form Stok Opname Fisik</span>
             </h3>
 
@@ -690,7 +690,7 @@ function InventoryContent() {
                     const p = products.find((x) => x.id === e.target.value);
                     if (p) setOpnamePhysicalQty(p.current_stock);
                   }}
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                 >
                   <option value="">-- Pilih Produk --</option>
                   {products.map((p) => (
@@ -723,7 +723,7 @@ function InventoryContent() {
                   value={opnamePhysicalQty}
                   onChange={(e) => setOpnamePhysicalQty(Number(e.target.value))}
                   placeholder="0"
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -752,14 +752,14 @@ function InventoryContent() {
                   value={opnameNote}
                   onChange={(e) => setOpnameNote(e.target.value)}
                   placeholder="Contoh: Rusak 2 pcs / Salah hitung sebelumnya"
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={savingOpname || !opnameProductId}
-                className="w-full mt-3 bg-purple-600 hover:bg-purple-500 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow disabled:opacity-50"
+                className="w-full mt-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition flex items-center justify-center gap-1.5 shadow disabled:opacity-50"
               >
                 {savingOpname ? (
                   <span className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
@@ -845,7 +845,7 @@ function InventoryContent() {
                   value={prodName}
                   onChange={(e) => setProdName(e.target.value)}
                   placeholder="Contoh: Minyak Goreng 1 Liter"
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -859,7 +859,7 @@ function InventoryContent() {
                     value={prodCategory}
                     onChange={(e) => setProdCategory(e.target.value)}
                     placeholder="Sembako, Minuman, etc."
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
 
@@ -873,7 +873,7 @@ function InventoryContent() {
                     value={prodUnit}
                     onChange={(e) => setProdUnit(e.target.value)}
                     placeholder="pcs, kg, liter, bungkus"
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -887,7 +887,7 @@ function InventoryContent() {
                   value={prodSku}
                   onChange={(e) => setProdSku(e.target.value)}
                   placeholder="Barcode 899..."
-                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                  className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                 />
               </div>
 
@@ -901,7 +901,7 @@ function InventoryContent() {
                     required
                     value={prodCostPrice}
                     onChange={(e) => setProdCostPrice(Number(e.target.value))}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
 
@@ -914,7 +914,7 @@ function InventoryContent() {
                     required
                     value={prodSellPrice}
                     onChange={(e) => setProdSellPrice(Number(e.target.value))}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -929,7 +929,7 @@ function InventoryContent() {
                     required
                     value={prodInitialStock}
                     onChange={(e) => setProdInitialStock(Number(e.target.value))}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
 
@@ -942,7 +942,7 @@ function InventoryContent() {
                     required
                     value={prodMinAlert}
                     onChange={(e) => setProdMinAlert(Number(e.target.value))}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-blue-500 focus:outline-none"
+                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -958,7 +958,7 @@ function InventoryContent() {
                 <button
                   type="submit"
                   disabled={savingProduct}
-                  className="flex-1 py-2 px-4 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl text-xs transition shadow flex justify-center"
+                  className="flex-1 py-2 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs transition shadow flex justify-center"
                 >
                   {savingProduct ? (
                     <span className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent" />
