@@ -7,6 +7,7 @@ import { clsx } from 'clsx';
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
+  variant?: 'light-bg' | 'transparent' | 'dark-bg';
   showText?: boolean;
   href?: string;
   className?: string;
@@ -14,46 +15,67 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({
   size = 'md',
-  showText = true,
+  variant = 'light-bg',
   href,
   className,
 }) => {
+  const heights = {
+    sm: 'h-6',
+    md: 'h-8',
+    lg: 'h-11',
+    xl: 'h-14',
+  }[size];
+
   const dimensions = {
-    sm: { img: 24, box: 'w-7 h-7', text: 'text-sm' },
-    md: { img: 32, box: 'w-9 h-9', text: 'text-lg' },
-    lg: { img: 48, box: 'w-12 h-12', text: 'text-xl' },
-    xl: { img: 64, box: 'w-16 h-16', text: 'text-2xl' },
+    sm: { width: 90, height: 38 },
+    md: { width: 120, height: 51 },
+    lg: { width: 160, height: 68 },
+    xl: { width: 200, height: 85 },
+  }[size];
+
+  const containerPadding = {
+    sm: 'px-2 py-1 rounded-lg',
+    md: 'px-3 py-1.5 rounded-xl',
+    lg: 'px-4 py-2 rounded-2xl',
+    xl: 'px-5 py-2.5 rounded-2xl',
   }[size];
 
   const content = (
-    <div className={clsx('flex items-center gap-2.5 group', className)}>
-      <div
-        className={clsx(
-          dimensions.box,
-          'relative rounded-xl overflow-hidden shadow-lg shadow-emerald-500/20 border border-slate-700/50 bg-slate-900 group-hover:scale-105 transition-transform shrink-0 flex items-center justify-center'
-        )}
-      >
-        <Image
-          src="/logo.png"
-          alt="KasirPro Logo"
-          width={dimensions.img}
-          height={dimensions.img}
-          className="object-cover w-full h-full p-0.5 rounded-lg"
-          priority
-        />
-      </div>
-
-      {showText && (
-        <span className={clsx('font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent', dimensions.text)}>
-          Kasir<span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Pro</span>
-        </span>
+    <div
+      className={clsx(
+        'inline-flex items-center justify-center transition-all duration-200 group-hover:scale-105 shrink-0 select-none',
+        variant === 'light-bg' &&
+          clsx(
+            'bg-white/95 backdrop-blur-md shadow-md shadow-emerald-950/20 border border-slate-200/80',
+            containerPadding
+          ),
+        variant === 'dark-bg' &&
+          clsx(
+            'bg-slate-900/90 backdrop-blur-md shadow-md border border-slate-800',
+            containerPadding
+          ),
+        className
       )}
+    >
+      <Image
+        src="/logo.png"
+        alt="KasirPro Logo"
+        width={dimensions.width}
+        height={dimensions.height}
+        className={clsx('object-contain w-auto', heights)}
+        priority
+      />
     </div>
   );
 
   if (href) {
-    return <Link href={href}>{content}</Link>;
+    return (
+      <Link href={href} className="inline-flex shrink-0 group">
+        {content}
+      </Link>
+    );
   }
 
   return content;
 };
+

@@ -83,7 +83,7 @@ export default function LoginPage() {
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-6">
           <div className="mb-3.5">
-            <Logo size="lg" showText={false} />
+            <Logo size="lg" variant="light-bg" />
           </div>
           <h1 className="text-2xl font-extrabold text-white tracking-tight">Masuk</h1>
           <p className="text-xs text-slate-400 mt-1.5 leading-relaxed max-w-xs">

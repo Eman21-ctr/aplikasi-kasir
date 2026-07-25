@@ -14,13 +14,16 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: 'Kasir - Aplikasi Kasir UMKM & Warung Modern',
+  title: 'KasirPro - Aplikasi Kasir UMKM & Warung Modern',
   description: 'Aplikasi kasir (POS) berbasis web modern, ringan, cepat, dan mudah digunakan untuk manajemen toko & transaksi UMKM.',
   manifest: '/manifest.json',
   icons: {
-    icon: '/logo.png',
-    shortcut: '/logo.png',
-    apple: '/logo.png',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    shortcut: '/icon.png',
+    apple: '/apple-icon.png',
   },
 };
 

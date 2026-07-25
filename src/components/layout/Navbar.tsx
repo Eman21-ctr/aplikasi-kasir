@@ -5,6 +5,7 @@ import { useAuth } from '@/context/AuthContext';
 import { supabase } from '@/lib/supabase';
 import { Bell, LogOut, Store, UserCheck, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
+import { Logo } from '@/components/common/Logo';
 
 export const Navbar: React.FC = () => {
   const { user, store, storeUser, role, isSuperAdminUser, signOut } = useAuth();
@@ -29,9 +30,16 @@ export const Navbar: React.FC = () => {
   }, [store?.id]);
 
   return (
-    <header className="sticky top-0 z-30 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 px-4 py-3 flex items-center justify-between">
-      {/* Brand & Store Name (Cleared for clean layout) */}
+    <header className="sticky top-0 z-30 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 px-4 py-2.5 flex items-center justify-between">
+      {/* Brand & Store Name (Top Left Logo on Every Menu Page) */}
       <div className="flex items-center gap-3">
+        <Logo href="/" size="md" variant="light-bg" />
+        {store?.name && (
+          <div className="hidden sm:flex flex-col border-l border-slate-800 pl-3">
+            <span className="text-xs font-bold text-slate-200 leading-none">{store.name}</span>
+            <span className="text-[10px] text-slate-400 mt-0.5">Toko Aktif</span>
+          </div>
+        )}
       </div>
 
       {/* Right Controls */}
