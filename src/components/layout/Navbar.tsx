@@ -37,7 +37,7 @@ export const Navbar: React.FC = () => {
     <header className="sticky top-0 z-30 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 px-4 py-2.5 flex items-center justify-between">
       {/* Brand & Store Name (Top Left Logo on Menu Pages, Hidden on Login/Register) */}
       <div className="flex items-center gap-3">
-        {!isAuthPage && <Logo href="/" size="md" variant="white" />}
+        {!isAuthPage && <Logo href="/" size="md" variant="green" />}
         {store?.name && (
           <div className="hidden sm:flex flex-col border-l border-slate-800 pl-3">
             <span className="text-xs font-bold text-slate-200 leading-none">{store.name}</span>

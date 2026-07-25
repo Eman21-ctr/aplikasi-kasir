@@ -15,7 +15,7 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({
   size = 'md',
-  variant = 'white',
+  variant = 'green',
   href,
   className,
 }) => {
