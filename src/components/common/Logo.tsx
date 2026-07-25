@@ -7,7 +7,7 @@ import { clsx } from 'clsx';
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  variant?: 'light-bg' | 'transparent' | 'dark-bg';
+  variant?: 'white' | 'green';
   showText?: boolean;
   href?: string;
   className?: string;
@@ -15,7 +15,7 @@ interface LogoProps {
 
 export const Logo: React.FC<LogoProps> = ({
   size = 'md',
-  variant = 'light-bg',
+  variant = 'white',
   href,
   className,
 }) => {
@@ -33,32 +33,17 @@ export const Logo: React.FC<LogoProps> = ({
     xl: { width: 200, height: 85 },
   }[size];
 
-  const containerPadding = {
-    sm: 'px-2 py-1 rounded-lg',
-    md: 'px-3 py-1.5 rounded-xl',
-    lg: 'px-4 py-2 rounded-2xl',
-    xl: 'px-5 py-2.5 rounded-2xl',
-  }[size];
+  const logoSrc = variant === 'green' ? '/logo.png' : '/logo-white.png';
 
   const content = (
     <div
       className={clsx(
-        'inline-flex items-center justify-center transition-all duration-200 group-hover:scale-105 shrink-0 select-none',
-        variant === 'light-bg' &&
-          clsx(
-            'bg-white/95 backdrop-blur-md shadow-md shadow-emerald-950/20 border border-slate-200/80',
-            containerPadding
-          ),
-        variant === 'dark-bg' &&
-          clsx(
-            'bg-slate-900/90 backdrop-blur-md shadow-md border border-slate-800',
-            containerPadding
-          ),
+        'inline-flex items-center justify-center transition-transform hover:scale-105 shrink-0 select-none',
         className
       )}
     >
       <Image
-        src="/logo.png"
+        src={logoSrc}
         alt="KasirPro Logo"
         width={dimensions.width}
         height={dimensions.height}
@@ -78,4 +63,5 @@ export const Logo: React.FC<LogoProps> = ({
 
   return content;
 };
+
 

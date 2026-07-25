@@ -119,7 +119,7 @@ function AdminLoginContent() {
         {/* Logo */}
         <div className="flex flex-col items-center text-center mb-6">
           <div className="mb-3.5">
-            <Logo size="lg" variant="light-bg" />
+            <Logo size="lg" variant="white" />
           </div>
           <h1 className="text-xl font-bold text-white tracking-tight">Panel Super Admin</h1>
           <p className="text-xs text-purple-300/80 mt-1">
