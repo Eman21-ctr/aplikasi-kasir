@@ -18,7 +18,11 @@ import { clsx } from 'clsx';
 
 export const Sidebar: React.FC = () => {
   const pathname = usePathname();
-  const { role, isSuperAdminUser } = useAuth();
+  const { user, role, isSuperAdminUser } = useAuth();
+
+  if (!user || pathname === '/login' || pathname === '/register' || pathname?.startsWith('/admin/login')) {
+    return null;
+  }
 
   const navigationItems = [
     {
