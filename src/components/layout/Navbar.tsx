@@ -86,12 +86,14 @@ export const Navbar: React.FC = () => {
               {isSuperAdminUser ? (
                 <ShieldCheck className="w-4 h-4 text-purple-400" />
               ) : (
-                storeUser?.name?.[0]?.toUpperCase() || 'U'
+                (storeUser?.name || store?.owner_name)?.[0]?.toUpperCase() || 'U'
               )}
             </div>
             <div className="hidden md:flex flex-col text-left">
               <span className="text-xs font-semibold text-slate-200 leading-tight">
-                {isSuperAdminUser ? 'Super Admin' : storeUser?.name || user.email}
+                {isSuperAdminUser
+                  ? 'Super Admin'
+                  : storeUser?.name || store?.owner_name || user.email}
               </span>
               <span className="text-[10px] text-slate-400 font-medium capitalize flex items-center gap-1">
                 {isSuperAdminUser ? (

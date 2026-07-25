@@ -115,6 +115,19 @@ function SettingsContent() {
 
       if (error) throw error;
 
+      // Update owner name in store_users table if user record exists
+      if (storeUser?.id && !storeUser.id.startsWith('owner-')) {
+        await supabase
+          .from('store_users')
+          .update({ name: ownerName.trim() || storeName.trim() })
+          .eq('id', storeUser.id);
+      } else if (storeUser?.auth_user_id) {
+        await supabase
+          .from('store_users')
+          .update({ name: ownerName.trim() || storeName.trim() })
+          .eq('auth_user_id', storeUser.auth_user_id);
+      }
+
       await refreshProfile();
       setStoreMsg('Informasi toko berhasil diperbarui!');
     } catch (err: any) {

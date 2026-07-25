@@ -899,9 +899,10 @@ function InventoryContent() {
                   <input
                     type="number"
                     required
-                    value={prodCostPrice}
+                    value={prodCostPrice || ''}
                     onChange={(e) => setProdCostPrice(Number(e.target.value))}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
+                    placeholder="0"
+                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
 
@@ -912,9 +913,10 @@ function InventoryContent() {
                   <input
                     type="number"
                     required
-                    value={prodSellPrice}
+                    value={prodSellPrice || ''}
                     onChange={(e) => setProdSellPrice(Number(e.target.value))}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
+                    placeholder="0"
+                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -927,9 +929,10 @@ function InventoryContent() {
                   <input
                     type="number"
                     required
-                    value={prodInitialStock}
+                    value={prodInitialStock || ''}
                     onChange={(e) => setProdInitialStock(Number(e.target.value))}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
+                    placeholder="0"
+                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
 
@@ -940,9 +943,10 @@ function InventoryContent() {
                   <input
                     type="number"
                     required
-                    value={prodMinAlert}
+                    value={prodMinAlert || ''}
                     onChange={(e) => setProdMinAlert(Number(e.target.value))}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-emerald-500 focus:outline-none"
+                    placeholder="5"
+                    className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
                   />
                 </div>
               </div>
