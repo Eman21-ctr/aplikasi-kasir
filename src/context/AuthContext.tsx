@@ -22,6 +22,12 @@ interface AuthContextType {
 
 const PUBLIC_PATHS = ['/login', '/register', '/admin/login'];
 
+// Helper to check public auth routes
+const isPublicAuthPath = (path: string | null) => {
+  if (!path) return false;
+  return PUBLIC_PATHS.some((p) => path === p || path.startsWith('/admin/login'));
+};
+
 const AuthContext = createContext<AuthContextType>({
   user: null,
   session: null,
@@ -120,9 +126,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await fetchProfile(session?.user ?? null);
 
       if (event === 'SIGNED_OUT' || !session) {
-        const isPublic = PUBLIC_PATHS.some(
-          (path) => pathname === path || pathname?.startsWith('/admin/login')
-        );
+        const isPublic = isPublicAuthPath(pathname);
         if (!isPublic) {
           router.push('/login');
         }
@@ -133,18 +137,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       authListener.subscription.unsubscribe();
     };
   }, []);
-
-  // Automatic Protection Check for non-public paths
-  useEffect(() => {
-    if (!isLoading) {
-      const isPublic = PUBLIC_PATHS.some(
-        (path) => pathname === path || pathname?.startsWith('/admin/login')
-      );
-      if (!user && !isPublic) {
-        router.push('/login');
-      }
-    }
-  }, [isLoading, user, pathname, router]);
 
   const refreshProfile = async () => {
     setIsLoading(true);
@@ -186,6 +178,36 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       subscriptionStatus = store.subscription_status || 'pending';
     }
   }
+
+  // Automatic Protection Check for non-public paths and pending status enforcement
+  useEffect(() => {
+    if (isLoading) return;
+
+    const isPublic = isPublicAuthPath(pathname);
+
+    if (!user) {
+      if (!isPublic) {
+        router.push('/login');
+      }
+    } else {
+      // User is logged in
+      if (isSuperAdminUser) {
+        if (pathname === '/pending') {
+          router.push('/admin');
+        }
+      } else {
+        if (subscriptionStatus === 'pending') {
+          if (pathname !== '/pending') {
+            router.push('/pending');
+          }
+        } else if (subscriptionStatus === 'active') {
+          if (pathname === '/pending') {
+            router.push('/');
+          }
+        }
+      }
+    }
+  }, [isLoading, user, subscriptionStatus, isSuperAdminUser, pathname, router]);
 
   return (
     <AuthContext.Provider

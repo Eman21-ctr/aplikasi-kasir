@@ -99,7 +99,7 @@ export default function RegisterPage() {
         if (isSuperAdminEmail) {
           router.push('/admin');
         } else {
-          router.push('/');
+          router.push('/pending');
         }
       }, 1500);
     } catch (err: any) {

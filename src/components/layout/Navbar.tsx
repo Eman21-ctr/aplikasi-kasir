@@ -14,7 +14,7 @@ export const Navbar: React.FC = () => {
   const [lowStockCount, setLowStockCount] = useState<number>(0);
   const [showNotifications, setShowNotifications] = useState(false);
 
-  const isAuthPage = pathname === '/login' || pathname === '/register' || pathname?.startsWith('/admin/login');
+  const isAuthPage = pathname === '/login' || pathname === '/register' || pathname === '/pending' || pathname?.startsWith('/admin/login');
 
   useEffect(() => {
     if (!store?.id) return;
@@ -35,10 +35,10 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-30 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 px-4 py-2.5 flex items-center justify-between">
-      {/* Brand & Store Name (Top Left Logo on Menu Pages, Hidden on Login/Register) */}
+      {/* Brand & Store Name (Top Left Logo on Menu Pages, Hidden on Login/Register/Pending) */}
       <div className="flex items-center gap-3">
         {!isAuthPage && <Logo href="/" size="md" variant="green" />}
-        {store?.name && (
+        {store?.name && !isAuthPage && (
           <div className="hidden sm:flex flex-col border-l border-slate-800 pl-3">
             <span className="text-xs font-bold text-slate-200 leading-none">{store.name}</span>
             <span className="text-[10px] text-slate-400 mt-0.5">Toko Aktif</span>
@@ -49,7 +49,7 @@ export const Navbar: React.FC = () => {
       {/* Right Controls */}
       <div className="flex items-center gap-3">
         {/* Notification Bell */}
-        {store && (
+        {store && pathname !== '/pending' && (
           <div className="relative">
             <button
               onClick={() => setShowNotifications(!showNotifications)}

@@ -1,14 +1,16 @@
 'use client';
 
 import React from 'react';
+import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { AlertTriangle } from 'lucide-react';
 
 export const SubscriptionBanner: React.FC = () => {
+  const pathname = usePathname();
   const { user, store, subscriptionStatus, isSuperAdminUser } = useAuth();
 
-  // Banner hanya muncul jika klien sudah mendaftar (login & ada toko) tapi belum diaktifkan
-  if (!user || !store || isSuperAdminUser || subscriptionStatus !== 'pending') {
+  // Banner hanya muncul jika klien sudah mendaftar (login & ada toko) tapi belum diaktifkan & bukan di halaman /pending
+  if (!user || !store || isSuperAdminUser || subscriptionStatus !== 'pending' || pathname === '/pending') {
     return null;
   }
 

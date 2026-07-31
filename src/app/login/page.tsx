@@ -58,7 +58,17 @@ export default function LoginPage() {
         if (isSuperAdmin(data.user.email)) {
           router.push('/admin');
         } else {
-          router.push('/');
+          const { data: stData } = await supabase
+            .from('stores')
+            .select('subscription_status')
+            .eq('auth_user_id', data.user.id)
+            .maybeSingle();
+
+          if (stData && stData.subscription_status === 'pending') {
+            router.push('/pending');
+          } else {
+            router.push('/');
+          }
         }
       }
     } catch (err: any) {

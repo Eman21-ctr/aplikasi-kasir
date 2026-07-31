@@ -9,9 +9,16 @@ import { clsx } from 'clsx';
 
 export const MobileNav: React.FC = () => {
   const pathname = usePathname();
-  const { user, role, isSuperAdminUser } = useAuth();
+  const { user, role, isSuperAdminUser, subscriptionStatus } = useAuth();
 
-  if (!user || pathname === '/login' || pathname === '/register' || pathname?.startsWith('/admin/login')) {
+  if (
+    !user ||
+    pathname === '/login' ||
+    pathname === '/register' ||
+    pathname === '/pending' ||
+    pathname?.startsWith('/admin/login') ||
+    (!isSuperAdminUser && subscriptionStatus === 'pending')
+  ) {
     return null;
   }
 
