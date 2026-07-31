@@ -4,7 +4,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://lygrxnpwmkt
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx5Z3J4bnB3bWt0anJ0c3NyZmF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ4Mzk0MTgsImV4cCI6MjEwMDQxNTQxOH0.d3o9mFG4LwBWyRIkr-Oate1nTJ1LqLGyxtdcJjmVjNM';
 
 export const SUPER_ADMIN_EMAIL = (process.env.NEXT_PUBLIC_SUPER_ADMIN_EMAIL || 'journalwarga@gmail.com').toLowerCase();
-export const SUPER_ADMIN_WA = process.env.NEXT_PUBLIC_SUPER_ADMIN_WA || '6281234567890';
+export const SUPER_ADMIN_WA = process.env.NEXT_PUBLIC_SUPER_ADMIN_WA || '6285704519549';
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
